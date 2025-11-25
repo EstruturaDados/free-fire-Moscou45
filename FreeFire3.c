@@ -66,7 +66,7 @@ void inserirItem() {
     printf("\n--- CADASTRO DE NOVO ITEM ---\n");
     
     // Leitura do nome (usando scanf e ignorando lixo do buffer para simplicidade)
-    printf("Nome do Item (max 29 caracteres): ");
+    printf("Nome do Item: ");
     scanf("%29s", mochila[contador_itens].nome);
 
     // Verifica se o item já existe para evitar duplicatas simples (Opcional, mas útil)
@@ -88,7 +88,7 @@ void inserirItem() {
     }
 
     contador_itens++; // Incrementa o contador
-    printf("\n✅ Item '%s' cadastrado com sucesso!\n", mochila[contador_itens - 1].nome);
+    printf("\n Item '%s' cadastrado com sucesso!\n", mochila[contador_itens - 1].nome);
 }
 
 /**
