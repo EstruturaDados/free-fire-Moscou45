@@ -55,7 +55,7 @@ void inserirItem() {
     printf("\n--- CADASTRO DE NOVO ITEM ---\n");
     
     // Leitura do nome (usando scanf e ignorando lixo do buffer para simplicidade)
-    printf("Nome do Item (max 29 caracteres): ");
+    printf("Nome do Item: ");
     scanf("%29s", mochila[contador_itens].nome);
 
     if (buscarItem(mochila[contador_itens].nome) != -1) {
@@ -74,7 +74,7 @@ void inserirItem() {
     }
 
     contador_itens++; 
-    printf("\n✅ Item '%s' cadastrado com sucesso!\n", mochila[contador_itens - 1].nome);
+    printf("\nItem '%s' cadastrado com sucesso!\n", mochila[contador_itens - 1].nome);
 }
 
 /**
@@ -117,7 +117,7 @@ void removerItem() {
  */
 void exibirMenu() {
     //printf("\n🏝️ MOCHILA DE SOBREVIVÊNCIA - CÓDIGO DA ILHA\n"); 
-    printf("       📜 ITENS ATUAIS DA MOCHILA (%d/%d)      \n", contador_itens, MAX_ITENS);
+    printf(" 📜 ITENS ATUAIS DA MOCHILA (%d/%d)      \n", contador_itens, MAX_ITENS);
     printf("1. Adicionar novo Item\n");
     printf("2. Remover Item\n");
     printf("3. Listar itens na mochila\n");
@@ -135,7 +135,7 @@ void listarItens() {
     printf("============================================\n");
     
     if (contador_itens == 0) {
-        printf("A mochila esta vazia.\n");
+        //printf("A mochila esta vazia.\n");
         return;
     }
 
@@ -155,20 +155,15 @@ void listarItens() {
 
 int main() {
     int opcao;
-    char nomeBusca[30];
-    int indiceEncontrado;
 
-    // Laço principal para manter o programa em execução até que o usuário saia
     do {
-        // Exibe a lista de itens antes do menu principal (Requisito Funcional: Listagem após cada operação)
+        
         listarItens(); 
         
         exibirMenu();
-        // A leitura de 'opcao' é feita diretamente, o que minimiza o delay (Desempenho)
         if (scanf("%d", &opcao) != 1) {
-            // Limpa o buffer em caso de entrada inválida
             while (getchar() != '\n');
-            opcao = 0; // Define uma opção inválida
+            opcao = 0;
             printf("❌ Entrada invalida. Tente novamente.\n");
             continue;
         }
@@ -181,21 +176,9 @@ int main() {
                 removerItem();
                 break;
             case 3:
-                printf("\n--- BUSCA DE ITEM ---\n");
-                printf("Informe o NOME do item para buscar: ");
-                scanf("%29s", nomeBusca);
                 
-                indiceEncontrado = buscarItem(nomeBusca);
-                
-                if (indiceEncontrado != -1) {
-                    Item item = mochila[indiceEncontrado];
-                    printf("\n✅ Item encontrado na posicao %d:\n", indiceEncontrado);
-                    printf("Nome: %s\n", item.nome);
-                    printf("Tipo: %s\n", item.tipo);
-                    printf("Quantidade: %d\n", item.quantidade);
-                } else {
-                    printf("\n❌ Item '%s' nao foi encontrado na mochila.\n", nomeBusca);
-                }
+                printf("\n✅ Exibindo lista de itens (Opcao 3).\n");
+               
                 break;
             case 4:
                 printf("\nSaindo do sistema. Adeus!\n");
@@ -205,16 +188,13 @@ int main() {
                 break;
         }
         
-        // Pausa breve para garantir que o usuário veja a saída antes da próxima listagem
         if (opcao != 4) {
             printf("\nPressione ENTER para continuar...\n");
-            // Limpa o buffer de entrada e espera uma nova linha (Enter)
             while (getchar() != '\n'); 
             getchar(); 
         }
 
-    } while (opcao != 4);
+    } while (opcao != 0);
 
     return 0;
 }
-
