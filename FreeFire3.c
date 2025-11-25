@@ -163,10 +163,10 @@ void listarItens() {
  * * (Requisito Não Funcional: Usabilidade)
  */
 void exibirMenu() {
-    printf("\n--- MENU DA MOCHILA ---\n");
-    printf("1. Inserir novo Item\n");
-    printf("2. Remover Item pelo Nome\n");
-    printf("3. Buscar Item pelo Nome\n");
+    printf("\n🏝️ MOCHILA DE SOBREVIVÊNCIA - CÓDIGO DA ILHA\n");
+    printf("1. Adicionar novo Item\n");
+    printf("2. Remover Item\n");
+    printf("3. Listar itens na mochila\n");
     printf("4. Sair do Sistema\n");
     printf("-----------------------\n");
     printf("Escolha uma opcao: ");

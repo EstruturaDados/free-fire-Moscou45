@@ -58,25 +58,56 @@ void inserirItem() {
     printf("Nome do Item (max 29 caracteres): ");
     scanf("%29s", mochila[contador_itens].nome);
 
-    // Verifica se o item já existe para evitar duplicatas simples (Opcional, mas útil)
     if (buscarItem(mochila[contador_itens].nome) != -1) {
         printf("⚠️ Item ja existente na mochila. Cadastro cancelado.\n");
         return;
     }
 
-    // Leitura do tipo
     printf("Tipo do Item (ex: arma, municao, cura): ");
     scanf("%19s", mochila[contador_itens].tipo);
 
-    // Leitura da quantidade
     printf("Quantidade: ");
-    // O scanf para int é seguro neste contexto
+    
     if (scanf("%d", &mochila[contador_itens].quantidade) != 1 || mochila[contador_itens].quantidade <= 0) {
         printf("❌ Entrada invalida para quantidade. Cadastro cancelado.\n");
         return;
     }
 
-    contador_itens++; // Incrementa o contador
+    contador_itens++; 
     printf("\n✅ Item '%s' cadastrado com sucesso!\n", mochila[contador_itens - 1].nome);
 }
+
+/**
+ * @brief Remove um item da mochila com base no nome.
+ * * (Requisito Funcional: Remoção de itens)
+ */
+void removerItem() {
+    char nome_remover[30];
+    printf("\n--- REMOCAO DE ITEM ---\n");
+    
+    // Leitura do nome do item a ser removido
+    printf("Informe o NOME do item a ser removido: ");
+    scanf("%29s", nome_remover);
+
+    int indice = buscarItem(nome_remover);
+
+    if (indice == -1) {
+        printf("\n❌ Item '%s' nao encontrado na mochila.\n", nome_remover);
+        return;
+    }
+
+    // 2. Remoção (Move o último item para a posição do item excluído)
+    // Isso evita "buracos" no vetor e é eficiente para remoção.
+    printf("\nItem '%s' (Quantidade: %d) sera removido.\n", mochila[indice].nome, mochila[indice].quantidade);
+    
+    // Se o item a ser removido não for o último, move o último para sua posição
+    if (indice != contador_itens - 1) {
+        // Copia a struct completa do último item para o índice de remoção
+        mochila[indice] = mochila[contador_itens - 1];
+    }
+
+    contador_itens--; // Vai decrementar o contador de itens
+    printf("✅ Remocao concluida. A mochila agora tem %d itens.\n", contador_itens);
+}
+
 
