@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 
-/** @brief Estrutura que representa um item na mochila do jogador.
+/** Estrutura que representa um item na mochila do jogador.
   Contém os campos nome, tipo e quantidade.*/
 
 typedef struct {
@@ -42,8 +42,8 @@ void exibirMenu();
 }
 
 /**
- * @brief Adiciona um novo item à mochila, se houver espaço.
- * * (Requisito Funcional: Cadastro de itens)
+ *Adiciona um novo item à mochila, se houver espaço.
+ *(Requisito Funcional: Cadastro de itens)
  */
 void inserirItem() {
     // Verifica se a mochila está cheia
@@ -78,8 +78,8 @@ void inserirItem() {
 }
 
 /**
- * @brief Remove um item da mochila com base no nome.
- * * (Requisito Funcional: Remoção de itens)
+ * Remove um item da mochila com base no nome.
+ * (Requisito Funcional: Remoção de itens)
  */
 void removerItem() {
     char nome_remover[30];
@@ -112,9 +112,8 @@ void removerItem() {
 
 
 /**
- * @brief Exibe o menu principal para o jogador.
- * * (Requisito Não Funcional: Usabilidade)
- */
+ * Exibe o menu principal para o jogador.
+ * */
 void exibirMenu() {
     //printf("\n🏝️ MOCHILA DE SOBREVIVÊNCIA - CÓDIGO DA ILHA\n"); 
     printf(" 📜 ITENS ATUAIS DA MOCHILA (%d/%d)      \n", contador_itens, MAX_ITENS);
@@ -126,9 +125,8 @@ void exibirMenu() {
     printf("Escolha uma opcao: ");
 }
 /**
- * @brief Lista todos os itens atualmente registrados na mochila.
- * * (Requisito Funcional: Listagem dos itens registrados)
- */
+ * Lista todos os itens atualmente registrados na mochila.
+ * */
 void listarItens() {
     printf("\n============================================\n");
     printf("       🏝️ MOCHILA DE SOBREVIVÊNCIA - CÓDIGO DA ILHA\n");
@@ -164,7 +162,7 @@ int main() {
         if (scanf("%d", &opcao) != 1) {
             while (getchar() != '\n');
             opcao = 0;
-            printf("❌ Entrada invalida. Tente novamente.\n");
+            printf(" Entrada invalida. Tente novamente.\n");
             continue;
         }
 
